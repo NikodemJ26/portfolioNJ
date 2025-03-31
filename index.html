@@ -190,6 +190,12 @@
         mobileMenu.classList.toggle('hidden');
       });
 
+      document.querySelectorAll("#mobile-menu a").forEach(link => {
+    link.addEventListener("click", function () {
+        window.location.href = this.href;
+    });
+});
+
       // Obsługa rozwijania dodatkowej sekcji
       showMoreBtn.addEventListener('click', function () {
         if (moreInfo.style.maxHeight && moreInfo.style.maxHeight !== "0px") {
