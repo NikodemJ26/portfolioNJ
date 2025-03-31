@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Nikodem Jakutowicz</title>
+  <!-- Ładowanie Tailwind CSS z CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animacja rozwijania sekcji */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 20%, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out both;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+  <!-- Nagłówek -->
+  <header class="bg-gray-800 shadow">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+      <!-- Logo / Nazwa -->
+      <div class="text-2xl font-bold text-gray-100 mb-2 md:mb-0">
+        Nikodem Jakutowicz
+      </div>
+      <!-- Nawigacja (desktop) -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="text-gray-300 hover:text-gray-100 transition">Strona Główna</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-gray-100 transition">Druk 3D</a></li>
+          <li><a href="foto.html" class="text-gray-300 hover:text-gray-100 transition">Fotografia</a></li>
+        </ul>
+      </nav>
+      <!-- Przycisk menu (mobile) -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-gray-300 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M4 8h16M4 16h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Menu mobilne -->
+    <div id="mobile-menu" class="hidden md:hidden">
+      <ul class="px-2 pt-2 pb-4 space-y-1">
+        <li>
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-100 hover:bg-gray-700 transition">
+            Strona Główna
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-100 hover:bg-gray-700 transition">
+            Druk 3D
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-100 hover:bg-gray-700 transition">
+            Fotografia
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Główna sekcja -->
+  <main class="container mx-auto px-4 py-16">
+    <div class="text-center animate-fadeInUp">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Nikodem Jakutowicz</h1>
+      <p class="text-lg md:text-2xl text-gray-400 mb-8">
+        Witaj na moim portfolio! Jestem pasjonatem Informatyki, druku 3D oraz fotografi – zapraszam do zapoznania się z moimi projektami.
+      </p>
+      <!-- Przycisk CTA rozwijający dodatkową sekcję -->
+      <div class="mb-8">
+        <button id="show-more-btn" class="inline-block bg-gray-700 text-gray-100 px-6 py-3 rounded-full text-lg font-medium transition transform hover:scale-105 hover:bg-gray-600">
+          Poznaj więcej
+        </button>
+      </div>
+      <!-- Social media -->
+      <div class="flex justify-center space-x-6">
+        <a href="https://www.instagram.com/capturedbyniko_/" class="text-gray-400 hover:text-gray-100 transition">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=100014675791915" class="text-gray-400 hover:text-gray-100 transition">Facebook</a>
+      </div>
+    </div>
+
+    <!-- Dodatkowa sekcja - doświadczenie -->
+    <section id="more-info" class="max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
+        <div class="mt-12 p-6 bg-gray-800 rounded-lg animate-fadeInUp">
+          <h2 class="text-3xl font-bold mb-6">O moim doświadczeniu</h2>
+          
+          <!-- Wykształcenie i kwalifikacje -->
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold mb-2">Wykształcenie i kwalifikacje</h3>
+            <p class="text-gray-300">
+              Posiadam świadectwo ukończenia Technikum Informatycznego, co potwierdza moje umiejętności w obszarach programowania, zarządzania sieciami komputerowymi oraz administracji systemami. Dzięki solidnym podstawom teoretycznym i praktycznemu podejściu zdobyłem wiedzę niezbędną do pracy w branży IT.
+            </p>
+          </div>
+          
+          <!-- Doświadczenie zawodowe i praktyki -->
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold mb-2">Doświadczenie zawodowe i praktyki</h3>
+            <ul class="list-disc list-inside text-gray-300">
+              <li>
+                <strong>POLBIT Polender Sp. K.</strong> – praktyki w dziale IT, gdzie odpowiadałem za wsparcie techniczne, wdrażanie rozwiązań sieciowych, serwisowanie oraz składanie komputerów.
+              </li>
+              <li>
+                <strong>Globallogic</strong> – staż, podczas którego uczestniczyłem w projektach związanych z tworzeniem i utrzymaniem aplikacji webowych.
+              </li>
+              <li>
+                <strong>Szczeciński Park Naukowo-Technologiczny TECHNOPARK POMERANIA</strong> – pomoc IT podczas eventów. Obsługiwałem kamery, światła, mikrofony oraz zapewniałem szybką pomoc na scenie, wdrażając innowacyjne rozwiązania w sytuacjach awaryjnych.
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Umiejętności i Certyfikaty -->
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold mb-2">Umiejętności i Certyfikaty</h3>
+            <ul class="list-disc list-inside text-gray-300">
+              <li>Cisco - Introduction to Cybersecurity – potwierdzone certyfikatem.</li>
+              <li>Cisco - Cybersecurity Essentials – potwierdzone certyfikatem.</li>
+              <li>Cisco - IT Essentials – potwierdzone certyfikatem.</li>
+              <li>Cisco - English for IT 1 oraz English for IT 2 – potwierdzone odznaką.</li>
+              <li>Cisco - JavaScript Essentials 1 – potwierdzone odznaką.</li>
+              <li>Cisco - Introduction to modern AI.</li>
+              <li>Cisco - Operating systems basics.</li>
+              <li>Cisco - Computer hardware basics.</li>
+              <li>Cisco - Network Addressing and Basic Troubleshooting.</li>
+            </ul>
+            <p class="text-gray-300 mt-2">
+              Wszystkie certyfikaty możesz zobaczyć <a href="https://www.credly.com/users/nikodem-jakutowicz" class="underline text-blue-400 hover:text-blue-600 transition">pod tym linkiem</a>.
+            </p>
+          </div>
+          
+          <!-- Projekty realizowane samodzielnie -->
+          <div>
+            <h3 class="text-2xl font-bold mb-2">Projekty realizowane samodzielnie</h3>
+            <ul class="list-disc list-inside text-gray-300">
+              <li>
+                <strong>Tworzenie stron internetowych:</strong> Realizuję projekty wykorzystujące nowoczesne technologie, takie jak Tailwind CSS, HTML oraz JavaScript, co pozwala mi na tworzenie responsywnych i estetycznych witryn.
+              </li>
+              <li>
+                <strong>Fotografia motoryzacyjna:</strong> Pasjonuję się fotografowaniem samochodów, co daje mi możliwość uchwycenia dynamicznych i pełnych emocji kadrów.
+              </li>
+              <li>
+                <strong>Druk 3D i projektowanie:</strong> Eksperymentuję z drukiem 3D oraz uczę się projektowania 3D w różnych programach, rozwijając swoje umiejętności w obszarze nowoczesnych technologii.
+              </li>
+              <li>
+                <strong>Odnawianie sprzętów retro:</strong> Zajmuję się renowacją starych komputerów, miksów oraz innych urządzeń audio, co pozwala mi na zachowanie ducha retro w nowoczesnym wydaniu.
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+      </section>
+      
+  </main>
+
+  <!-- Stopka -->
+  <footer class="bg-gray-800">
+    <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-sm text-gray-400 mb-2 md:mb-0">
+        &copy; 2025 Nikodem Jakutowicz. Wszelkie prawa zastrzeżone.
+      </div>
+      <div class="text-sm text-gray-400">
+        Email: <a href="mailto:jakutowiczn@gmail.com" class="hover:text-gray-100 transition">jakutowiczn@gmail.com</a>
+        |
+        Tel: <a href="tel:+48515022154" class="hover:text-gray-100 transition">+48 515 022 154</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript obsługujący menu mobilne i rozwijanie sekcji -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const showMoreBtn = document.getElementById('show-more-btn');
+      const moreInfo = document.getElementById('more-info');
+
+      // Obsługa menu mobilnego
+      menuBtn.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Obsługa rozwijania dodatkowej sekcji
+      showMoreBtn.addEventListener('click', function () {
+        if (moreInfo.style.maxHeight && moreInfo.style.maxHeight !== "0px") {
+          moreInfo.style.maxHeight = "0px";
+        } else {
+          moreInfo.style.maxHeight = moreInfo.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
