@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Druk 3D - Nikodem Jakutowicz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/3MFLoader.js"></script>
+  <style>
+    .viewer {
+      width: 100%;
+      height: 300px;
+      background: #222;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+  <header class="bg-gray-800 shadow">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-2xl font-bold text-gray-100">Nikodem Jakutowicz</div>
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="text-gray-300 hover:text-gray-100 transition">Strona Główna</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-gray-100 transition">Druk 3D</a></li>
+          <li><a href="foto.html" class="text-gray-300 hover:text-gray-100 transition">Fotografia</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-center mb-8">Galeria Druków 3D</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="viewer" id="viewer1"></div>
+      <div class="viewer" id="viewer2"></div>
+      <div class="viewer" id="viewer3"></div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 py-6 text-center text-gray-400">
+    &copy; 2025 Nikodem Jakutowicz. Wszelkie prawa zastrzeżone.
+  </footer>
+
+  <script>
+    function initViewer(containerId, modelPath) {
+      const container = document.getElementById(containerId);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.appendChild(renderer.domElement);
+
+      const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+      scene.add(light);
+      
+      const loader = new THREE.ThreeMFLoader();
+      loader.load(modelPath, function (object) {
+        object.position.set(0, -0.5, 0);
+        object.scale.set(0.5, 0.5, 0.5);
+        scene.add(object);
+      });
+
+      camera.position.z = 2;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+    
+    initViewer('viewer1', 'models/model1.3mf');
+    initViewer('viewer2', 'models/model2.3mf');
+    initViewer('viewer3', 'models/model3.3mf');
+  </script>
+</body>
+</html>
