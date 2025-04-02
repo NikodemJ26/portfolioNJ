@@ -4,45 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Druk 3D - Nikodem Jakutowicz</title>
-   <!-- Tailwind CSS -->
-   <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-   <!-- Three.js -->
-   <script type="module">
-     import * as THREE from 'https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js';
-     import { ThreeMFLoader } from 'https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/3MFLoader.js';
-     import { fflate } from 'https://cdn.jsdelivr.net/npm/fflate@0.8.0/esm/browser.js';
- 
-     // Przypisanie fflate do globalnego okna, aby 3MFLoader go widział
-     window.fflate = fflate;
- 
-     // Scena i renderowanie
-     const scene = new THREE.Scene();
-     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-     const renderer = new THREE.WebGLRenderer();
-     renderer.setSize(window.innerWidth, window.innerHeight);
-     document.body.appendChild(renderer.domElement);
- 
-     // Światło
-     const light = new THREE.AmbientLight(0xffffff, 1);
-     scene.add(light);
- 
-     // Ładowanie modelu 3MF
-     const loader = new ThreeMFLoader();
-     loader.load('models/test.3mf', (object) => {
-       scene.add(object);
-       object.position.set(0, 0, 0);
-     }, undefined, (error) => {
-       console.error('Błąd ładowania:', error);
-     });
- 
-     // Animacja
-     function animate() {
-       requestAnimationFrame(animate);
-       renderer.render(scene, camera);
-     }
-     animate();
-   </script>
+  <!-- Three.js i 3MFLoader w trybie ES Modules -->
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js';
+    import { ThreeMFLoader } from 'https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/3MFLoader.js';
+    import { fflate } from 'https://cdn.jsdelivr.net/npm/fflate@0.8.0/esm/browser.js';
+
+    // Fflate musi być globalne dla 3MFLoader
+    window.fflate = fflate;
+
+    function initViewer() {
+      // Inicjalizacja sceny
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Światło
+      const light = new THREE.AmbientLight(0xffffff, 1);
+      scene.add(light);
+
+      // Ładowanie modelu 3MF
+      const loader = new ThreeMFLoader();
+      loader.load('models/test.3mf', (object) => {
+        scene.add(object);
+        object.position.set(0, 0, 0);
+      }, undefined, (error) => {
+        console.error('Błąd ładowania:', error);
+      });
+
+      // Animacja
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+
+    // Uruchomienie
+    initViewer();
+  </script>
   <style>
     .viewer {
       width: 100%;
