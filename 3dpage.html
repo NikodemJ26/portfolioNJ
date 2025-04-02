@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Druk 3D - Nikodem Jakutowicz</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/fflate@0.8.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
+  <script type="module">
+    import * as fflate from 'https://cdn.jsdelivr.net/npm/fflate@0.8.0/esm/browser.js';
+    window.fflate = fflate;
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/three@latest/examples/js/loaders/3MFLoader.js"></script>
   <style>
     .viewer {
