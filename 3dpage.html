@@ -9,13 +9,13 @@
 
   <!-- Three.js i 3MFLoader w trybie ES Modules -->
   <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js';
-    import { ThreeMFLoader } from 'https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/3MFLoader.js';
+    import * as THREE from 'libs/three.module.js'; // filepath: portfolioNJ/libs/three.module.js
+    import { ThreeMFLoader } from 'libs/3MFLoader.js'; // filepath: portfolioNJ/libs/3MFLoader.js
     import { fflate } from 'https://cdn.jsdelivr.net/npm/fflate@0.8.0/esm/browser.js';
-
+  
     // Fflate musi być globalne dla 3MFLoader
     window.fflate = fflate;
-
+  
     function initViewer() {
       // Inicjalizacja sceny
       const scene = new THREE.Scene();
@@ -23,11 +23,11 @@
       const renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
-
+  
       // Światło
       const light = new THREE.AmbientLight(0xffffff, 1);
       scene.add(light);
-
+  
       // Ładowanie modelu 3MF
       const loader = new ThreeMFLoader();
       loader.load('models/test.3mf', (object) => {
@@ -36,7 +36,7 @@
       }, undefined, (error) => {
         console.error('Błąd ładowania:', error);
       });
-
+  
       // Animacja
       function animate() {
         requestAnimationFrame(animate);
@@ -44,7 +44,7 @@
       }
       animate();
     }
-
+  
     // Uruchomienie
     initViewer();
   </script>
